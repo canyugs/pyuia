@@ -1,3 +1,3 @@
-from pageobject import *
-from context import *
+from .pageobject import *
+from .context import *
 

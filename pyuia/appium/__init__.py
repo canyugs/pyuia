@@ -1,4 +1,4 @@
-from pageobject import *
-from context import *
-from util import *
+from .pageobject import *
+from .context import *
+from .util import *
 

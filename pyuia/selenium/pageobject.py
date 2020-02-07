@@ -98,7 +98,7 @@ def find_by(how=None, using=None, multiple=False, cacheable=True, if_exists=Fals
             msg = "%s ; find_by(how='%s', using='%s', multiple=%s, cacheable=%s, " \
                   "if_exists=%s, context=%s)" % \
                   (str(e), _how, repr(_using), multiple, cacheable, if_exists, context)
-            raise NoSuchElementException(msg), None, sys.exc_info()[2]
+            raise NoSuchElementException(msg).with_traceback(sys.exc_info()[2])
 
     func = cacheable_decorator(func, cache_none=not if_exists) if cacheable else func
 

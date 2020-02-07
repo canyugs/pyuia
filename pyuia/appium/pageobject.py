@@ -115,7 +115,7 @@ def find_by(how=None, using=None, multiple=False, cacheable=True, if_exists=Fals
                     msg = "%s ; find_by(how='%s', using='%s', multiple=%s, cacheable=%s, " \
                           "if_exists=%s, context=%s, scrollable=%s)" % \
                           (str(e), method_dic['_how'], method_dic['_using'], multiple, cacheable, if_exists, context, scrollable)
-                    raise NoSuchElementException(msg), None, sys.exc_info()[2]
+                    raise NoSuchElementException(msg).with_traceback(sys.exc_info()[2])
 
                 scroller = _get_scroller(page_object, container, scrollable)
                 _scroll(page_object, driver, scroller, scroll_forward,
