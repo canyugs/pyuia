@@ -1,7 +1,7 @@
 import logging, inspect
 from robot.utils import ConnectionCache
 from pyuia import PageObject, get_page_object
-from util import is_test_failed, log_screenshot, log_text, in_context as in_robot_context
+from .util import is_test_failed, log_screenshot, log_text, in_context as in_robot_context
 
 __all__ = ['BaseAppLibrary']
 _logger = logging.getLogger(__name__)

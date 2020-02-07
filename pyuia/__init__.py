@@ -1,4 +1,4 @@
-from exceptions import *
-from context import *
-from pageobject import *
+from .exceptions import *
+from .context import *
+from .pageobject import *
 

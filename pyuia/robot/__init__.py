@@ -1,3 +1,3 @@
-from library import *
-from util import *
+from .library import *
+from .util import *
 
