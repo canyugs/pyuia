@@ -61,7 +61,7 @@ def log_text(text, msg='TEXT', prefix='text', suffix='.txt', level=logging.DEBUG
     filename = '%s%s%s' % (prefix, int(time.time() * 1000), suffix)
     pathname = path.join(_get_log_dir(), filename)
     with open(pathname, 'wb') as f:
-	f.write(text.encode('utf-8'))
+        f.write(text.encode('utf-8'))
     html = '<a href="%s" target="_blank">%s</a>' % (filename, filename)
 
     msg = '%s: %s' % (msg, html) # TODO: HTML encode msg
