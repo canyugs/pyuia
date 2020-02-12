@@ -91,7 +91,8 @@ def find_by(how=None, using=None, multiple=False, cacheable=True, if_exists=Fals
             ctx = driver
             container = None
         elif callable(context):
-            container = ctx = context(page_object)
+            container = ctx = context() # keep consistent of usage while using context
+            #container = ctx = context(page_object)
             if not ctx:
                 if if_exists:
                     return None
