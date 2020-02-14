@@ -48,12 +48,13 @@ class _StateCapturing(type):
               attrs[name] = _state_capturing_decorator(obj)
           return type.__new__(cls, clsname, bases, attrs)
 
-class BaseAppLibrary(object):
+class BaseAppLibrary(metaclass=_StateCapturing):
 
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 
+    # python 2 compatibility
     if in_robot_context:
-        __metaclass__ = _StateCapturing
+         __metaclass__ = _StateCapturing
 
     def __init__(self):
         self._cache = ConnectionCache()
