@@ -160,8 +160,8 @@ class BaseAppLibrary(metaclass=_StateCapturing):
 
             context.log_page_source('Page source', level=logging.INFO)
             context.log_screenshot('Screenshot', level=logging.INFO)
-        except:
-            _logger.warning('Fail to capture state. (keyword failed = %s)', failed, exc_info=True)
+        except Exception as capture_err:
+            _logger.warning('Fail to capture state. (keyword failed = {} error = {})\ncapture_state_error = {})'.format(failed, err, capture_err), exc_info=True)
 
     @property
     def _current_context(self):

@@ -6,6 +6,7 @@ class SeleniumContext(AppContext):
 
     def __init__(self, driver):
         self.driver = driver
+        self.logs_all = []
         platform = driver.desired_capabilities['platformName']
         AppContext.__init__(self, platform)
 
