@@ -1,7 +1,7 @@
 import time, sys
 from ..selenium import SeleniumPageObject, cacheable
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy as By
 
 __all__ = ['AppiumPageObject', 'find_by', 'cacheable']
 
@@ -15,14 +15,25 @@ class AppiumPageObject(SeleniumPageObject):
         self._driver.keyevent(4)
 
 _strategy_kwargs = {
+    'accessibility_id': By.ACCESSIBILITY_ID,
+    'android_data_matcher': By.ANDROID_DATA_MATCHER,
+    'android_uiautomator': By.ANDROID_UIAUTOMATOR,
+    'android_viewtag': By.ANDROID_VIEWTAG,
+    'class_name': By.CLASS_NAME,
+    'css_selector': By.CSS_SELECTOR,
+    'custom': By.CUSTOM,
     'id_': By.ID,
-    'xpath': By.XPATH,
+    'image': By.IMAGE,
+    'ios_class_chain': By.IOS_CLASS_CHAIN,
+    'ios_predicate': By.IOS_PREDICATE,
+    'ios_uiautomation': By.IOS_UIAUTOMATION,
+    'name': By.NAME,
     'link_text': By.LINK_TEXT,
     'partial_link_text': By.PARTIAL_LINK_TEXT,
-    'name': By.NAME,
     'tag_name': By.TAG_NAME,
-    'class_name': By.CLASS_NAME,
-    'css_selector': By.CSS_SELECTOR }
+    'windows_ui_automation': By.WINDOWS_UI_AUTOMATION,
+    'xpath': By.XPATH
+ }
 
 from pyuia import cacheable as cacheable_decorator # naming conflict between global and parameter names
 
@@ -82,9 +93,9 @@ def find_by(how=None, using=None, multiple=False, cacheable=True, if_exists=Fals
         # Github release note: https://github.com/appium/appium/releases/tag/v1.5.0
         # Discuss thread: https://discuss.appium.io/t/appium-1-5-fails-to-find-element-by-name/8857/10
 
-        if method_dic['_how'] == 'name':
-            method_dic['_how'] = 'xpath'
-            method_dic['_using'] = "//*[@text='" + method_dic['_using'] + "' or @content-desc='" + method_dic['_using'] + "']"
+        # if method_dic['_how'] == 'name':
+        #     method_dic['_how'] = 'xpath'
+        #     method_dic['_using'] = "//*[@text='" + method_dic['_using'] + "' or @content-desc='" + method_dic['_using'] + "']"
 
         # ctx - driver or a certain element
         if context is None:
